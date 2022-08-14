@@ -115,7 +115,12 @@ def find_motto(filename, villager_name):
         - str: the villager's motto or None
     """
 
-    # TODO: replace this with your code
+    file = open(filename)
+   
+    for line in file:
+        name, _, _, _, motto = line.rstrip().split("|")
+        if name == villager_name
+        return motto
 
 
 def find_likeminded_villagers(filename, villager_name):
@@ -132,5 +137,10 @@ def find_likeminded_villagers(filename, villager_name):
         >>> find_likeminded_villagers('villagers.csv', 'Wendy')
         {'Bella', ..., 'Carmen'}
     """
+    villager_name = name
+    file = open(filename)
+    for line in filename:
+        name, _, personality, _, _ = set(line.rstrip().split('|'))
+        if name & personality:
+            return name
 
-    # TODO: replace this with your code
