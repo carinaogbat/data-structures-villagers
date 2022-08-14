@@ -1,6 +1,9 @@
 """Functions to parse a file containing villager data."""
 
 
+from unittest import findTestCases
+
+
 def all_species(filename):
     """Return a set of unique species in the given file.
 
@@ -19,8 +22,6 @@ def all_species(filename):
     return species
 
 
-
-
 def get_villagers_by_species(filename, search_string="All"):
     """Return a list of villagers' names by species.
 
@@ -31,27 +32,51 @@ def get_villagers_by_species(filename, search_string="All"):
     Return:
         - list[str]: a list of names
     """
-
+    file = open(filename)
     villagers = []
+    species = search_string
+    for line in file:
+        line.strip()
+        char = line.split("|")
+        if species == char[1]:
+            villagers.append(char[0])
 
-    # TODO: replace this with your code
+    return villagers
 
-    return sorted(villagers)
+# def all_names_by_hobby(filename):
+#     """Return a list of lists containing villagers' names, grouped by hobby.
 
+#     Arguments:
+#         - filename (str): the path to a data file
 
-def all_names_by_hobby(filename):
-    """Return a list of lists containing villagers' names, grouped by hobby.
-
-    Arguments:
-        - filename (str): the path to a data file
-
-    Return:
-        - list[list[str]]: a list of lists containing names
-    """
-
-    # TODO: replace this with your code
-
-    return []
+#     Return:
+#         - list[list[str]]: a list of lists containing names
+#     """
+#     education = []
+#     fitness = []
+#     nature = []
+#     music = []
+#     play = []
+#     fashion = []
+#     name = []
+#     file = open(filename)
+#     for line in file:
+#         char = line.split("|")
+#         if char[3] == "Education":
+#             education.append(char[0])
+#         elif char[3] == "Fitness":
+#             fitness.append(char[0])
+#         elif char[3] == 'Nature':
+#             nature.append(char[0])
+#         elif char[3] == "Music":
+#             music.append(char[0])
+#         elif char[3] == "Play":
+#             play.append(char[0])
+#         elif char[3] == "Fashion":
+#             fashion.append(char[0]) 
+#     hobbies_by_name = []
+#     hobbies_by_name.append(fitness, nature, education, music, fashion, play)
+    # return hobbies_by_name
 
 
 def all_data(filename):
@@ -66,10 +91,12 @@ def all_data(filename):
     Return:
         - list[tuple[str]]: a list of tuples containing strings
     """
-
+    file = open(filename)
     all_data = []
+    for line in file:
+        all_data.append(tuple(line.rstrip().split('|')))
 
-    # TODO: replace this with your code
+    
 
     return all_data
 
